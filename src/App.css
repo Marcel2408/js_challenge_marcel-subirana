@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+/* ==========================================================================
+   Fonts
+   ========================================================================== */
+
+   @font-face{
+    font-family: 'Lato-Bold';
+    src: url('./font/Lato-Bold.ttf') format('ttf');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face{
+    font-family: 'Lato-BoldItalic';
+    src: url('./font/Lato-BoldItalic.ttf') format('ttf');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face{
+    font-family: 'Lato-Italic';
+    src: url('./font/Lato-Italic.ttf') format('ttf');
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@font-face{
+    font-family: 'Lato-Regular';
+    src: url('./font/Lato-Regular.ttf') format('ttf');
 }
 
-.App-link {
-  color: #61dafb;
+/* ==========================================================================
+   Main Styles
+   ========================================================================== */
+html {
+    height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+    min-height: 100%;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+
+    font-family: 'Lato-Regular', sans-serif;
+    font-size: 13px;
+    text-rendering: optimizeLegibility;
+
+    -moz-osx-font-smoothing: grayscale;  /* Font smoothing tweaks for MacOSx in Gecko */
+    -webkit-font-smoothing: antialiased;
+
+    color: #444A59;
+    background-color: #f8f8f8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1, p, figure {
+    margin: 0;
+    font-weight: normal;
+}
+
+a,
+a:hover,
+a:visited{
+    text-decoration: none;
+    color: #444A59;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+button {
+    appearance: none;
+    border: 0;
+}
+
+header,
+footer {
+    height: 60px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    text-transform: uppercase;
+    background-color: #ffffff;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 auto;
+    margin: 30px 0 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1240px;
+    padding: 0 40px;
+    margin: 0 auto;
 }
