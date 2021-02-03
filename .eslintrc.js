@@ -29,6 +29,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'import/extensions': 'off',
+    'react/prop-types': [0, { ignore: 'children' }],
   },
   settings: {
     react: {

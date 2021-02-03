@@ -1,17 +1,20 @@
-import * as React from 'react';
+import React, { useContext, useState } from 'react';
 import './ProductItem.styles.scss';
 import { ReactComponent as WishlistIcon } from '../../assets/svg/wishlist.svg';
+import productImage from '../../assets/images/activity_image.jpeg';
+import CartContext from '../../contexts/Cart.context';
 
 const ProductItem: React.FC = () => {
+  const { addToCount } = useContext(CartContext);
+  const [isClicked, setIsClicked] = useState(false);
+  const addToCart = () => {
+    addToCount();
+    setIsClicked(!isClicked);
+  };
   return (
     <article className="product" itemScope itemType="http://schema.org/Product">
       <figure className="product__image-wrapper">
-        <img
-          className="product__image"
-          src="./../../assets/images/activity_image.jpeg"
-          alt="Product"
-          itemProp="image"
-        />
+        <img className="product__image" src={productImage} alt="Product" itemProp="image" />
         <button
           type="button"
           className="product__wishlist-button button button--round button--wishlist"
@@ -34,8 +37,14 @@ const ProductItem: React.FC = () => {
             £210
           </span>
         </div>
-        <button type="button" className="product__add-to-cart button button--primary">
-          Add to Cart
+        <button
+          type="button"
+          className={`product__add-to-cart button button--primary ${
+            isClicked && 'button--in-cart'
+          }`}
+          onClick={addToCart}
+        >
+          {isClicked ? 'In cart' : 'Add to Cart'}
         </button>
       </div>
     </article>
