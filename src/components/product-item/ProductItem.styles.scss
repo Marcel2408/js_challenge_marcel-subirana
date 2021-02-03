@@ -124,6 +124,10 @@
         fill: #444A59;
       }
     }
+
+    &--in-cart {
+      pointer-events: none;
+    }
   }
 
 

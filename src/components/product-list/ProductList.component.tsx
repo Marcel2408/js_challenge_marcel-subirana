@@ -1,17 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 import './ProductList.styles.scss';
 import { ReactComponent as ArrowLeftIcon } from '../../assets/svg/arrow-left.svg';
 import { ReactComponent as ArrowRightIcon } from '../../assets/svg/arrow-right.svg';
 import { ReactComponent as WishlistIcon } from '../../assets/svg/wishlist.svg';
 import ProductItem from '../product-item/ProductItem.component';
+import itemData from '../../item.data.js';
 
 const ProductList: React.FC = () => {
   return (
     <div className="container">
       <ul className="product-list">
-        <li className="product-list__item">
-          <ProductItem />
-        </li>
+        {itemData.map((item) => (
+          <li className="product-list__item">
+            <ProductItem key={item.id} item={item} />
+          </li>
+        ))}
+
         <li className="product-list__item">
           <article className="product" itemScope itemType="http://schema.org/Product">
             <figure className="product__image-wrapper">
