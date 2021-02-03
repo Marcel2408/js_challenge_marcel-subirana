@@ -8,6 +8,7 @@ import WishlistContext from '../../contexts/Wishlist.context';
 const Header: React.FC = () => {
   const { cartItemsCount } = useContext(CartContext);
   const { wishlistCount } = useContext(WishlistContext);
+
   return (
     <header className="header container">
       <h1 className="page-title">BRAND</h1>

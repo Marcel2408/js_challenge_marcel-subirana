@@ -9,9 +9,7 @@ const CartContext = createContext({
   addItemToCart: (item: Item) => {},
   //  todo removeItem: () => {}
   // todo clearItemFromCart: () => {}
-  // todo cartItemsCount: 0
   cartItemsCount: 0,
-  addToCount: () => {},
 });
 
 export default CartContext;

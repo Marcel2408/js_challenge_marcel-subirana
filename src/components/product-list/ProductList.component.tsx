@@ -11,8 +11,8 @@ const ProductList: React.FC = () => {
     <div className="container">
       <ul className="product-list">
         {itemData.map((item) => (
-          <li className="product-list__item">
-            <ProductItem key={item.id} item={item} />
+          <li key={item.id} className="product-list__item">
+            <ProductItem item={item} />
           </li>
         ))}
 

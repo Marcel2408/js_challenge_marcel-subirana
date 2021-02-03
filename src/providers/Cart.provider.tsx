@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CartContext from '../contexts/Cart.context';
 import { Item } from '../interfaces/Item.interface';
 
@@ -8,24 +8,22 @@ interface CartProviderProps {
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [isHidden, setIsHidden] = useState(true);
-  const [cartItemsCount, setItemsCount] = useState(0);
   const [cartItems, setCartItems] = useState<Item[]>([]);
+  const [cartItemsCount, setCartItemsCount] = useState(0);
   const toggleHidden = () => setIsHidden(!isHidden);
-  const addToCount = () =>
-    setItemsCount((prevCount) => {
-      const updatedCount = prevCount + 1;
-      return updatedCount;
-    });
 
   const addItemToCart = (item: Item) => {
     setCartItems((prevItems) => [...prevItems, item]);
   };
 
+  useEffect(() => {
+    setCartItemsCount(cartItems.length);
+  }, [cartItems]);
+
   return (
     <CartContext.Provider
       value={{
         cartItemsCount,
-        addToCount,
         isHidden,
         toggleHidden,
         cartItems,
