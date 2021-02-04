@@ -55,10 +55,14 @@ const ProductItem: React.FC<ProductItemProps> = ({ item }) => {
           {description}
         </p>
         <div className="product__price" itemScope itemType="http://schema.org/Offer">
-          {discount !== 0 && <span className="product__price--strike">{fullPrice}</span>}
-          <span className="product__price--discounted" itemProp="price">
-            {finalPrice}
+          <span className={`product__price${discount !== 0 && '--strike'}`}>
+            {discount !== 0 ? fullPrice : finalPrice}
           </span>
+          {discount !== 0 && (
+            <span className="product__price--discounted" itemProp="price">
+              {finalPrice}
+            </span>
+          )}
         </div>
         <button
           type="button"
