@@ -16,24 +16,25 @@
     display: flex;
     flex-direction: column;
     overflow: overlay;
+
+    .empty-message {
+      margin: 70px auto;
+    }
   }
 
-  button {
+  .button--checkout {
     margin-top: auto;
+    border: 1px solid #444a59;
+    border-radius: 100px;
+    background-color: #444a59;
+    outline: none;
+    color: #fff;
 
-    &.button--checkout {
-      border: 1px solid #444a59;
-      border-radius: 100px;
-      background-color: #444a59;
+    &:hover {
+      border: 1px solid #d9d9d9;
+      background-color: #ffffff;
       outline: none;
-      color: #fff;
-
-      &:hover {
-        border: 1px solid #d9d9d9;
-        background-color: #ffffff;
-        outline: none;
-        color: #808080;
-      }
+      color: #808080;
     }
   }
 }

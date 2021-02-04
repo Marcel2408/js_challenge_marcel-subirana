@@ -2,7 +2,6 @@ import React from 'react';
 import './ProductList.styles.scss';
 import { ReactComponent as ArrowLeftIcon } from '../../assets/svg/arrow-left.svg';
 import { ReactComponent as ArrowRightIcon } from '../../assets/svg/arrow-right.svg';
-import { ReactComponent as WishlistIcon } from '../../assets/svg/wishlist.svg';
 import ProductItem from '../product-item/ProductItem.component';
 import itemData from '../../item.data.js';
 
@@ -15,46 +14,6 @@ const ProductList: React.FC = () => {
             <ProductItem item={item} />
           </li>
         ))}
-
-        <li className="product-list__item">
-          <article className="product" itemScope itemType="http://schema.org/Product">
-            <figure className="product__image-wrapper">
-              <img
-                className="product__image"
-                src="./../../assets/images/activity_image.jpeg"
-                alt="Product"
-                itemProp="image"
-              />
-              <button
-                type="button"
-                className="product__wishlist-button button button--round button--wishlist"
-              >
-                <WishlistIcon>
-                  <title>Wishlist Icon</title>
-                </WishlistIcon>
-              </button>
-            </figure>
-            <div className="product__details">
-              <h1 className="product__title" itemProp="brand">
-                Product Title
-              </h1>
-              <p className="product__subtitle" itemProp="description">
-                Product Description
-              </p>
-              <div className="product__price" itemScope itemType="http://schema.org/Offer">
-                <span className="product__price" itemProp="price">
-                  £210
-                </span>
-              </div>
-              <button
-                type="button"
-                className="product__add-to-cart button button--primary button--in-cart"
-              >
-                In Cart
-              </button>
-            </div>
-          </article>
-        </li>
       </ul>
 
       <nav className="pagination">

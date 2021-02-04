@@ -18,6 +18,10 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setCartItems((prevItems) => [...prevItems, item]);
   };
 
+  const removeItem = (id: string) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
+
   useEffect(() => {
     setCartItemsCount(cartItems.length);
     setTotalPrice(updateTotalPrice(cartItems));
@@ -31,6 +35,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         toggleHidden,
         cartItems,
         addItemToCart,
+        removeItem,
         totalPrice,
       }}
     >

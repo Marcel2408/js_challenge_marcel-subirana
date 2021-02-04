@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './ProductItem.styles.scss';
 import { ReactComponent as WishlistIcon } from '../../assets/svg/wishlist.svg';
 // import productImage from '../../assets/images/activity_image.jpeg';
@@ -16,7 +16,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ item }) => {
   const [isCartClicked, setIsCartClicked] = useState(false);
   const [isWishlistClicked, setIsWishlistClicked] = useState(false);
 
-  const { addItemToCart } = useContext(CartContext);
+  const { cartItems, removeItem, addItemToCart } = useContext(CartContext);
 
   const { addToWishlist, removeFromWishlist } = useContext(WishlistContext);
 
@@ -30,6 +30,13 @@ const ProductItem: React.FC<ProductItemProps> = ({ item }) => {
     setIsCartClicked(!isCartClicked);
     if (isWishlistClicked) toggleWishlist();
   };
+
+  useEffect(() => {
+    if (!cartItems.includes(item) && isCartClicked) {
+      setIsCartClicked(!isCartClicked);
+    }
+  }, [removeItem]);
+
   return (
     <article className="product" itemScope itemType="http://schema.org/Product">
       <figure className="product__image-wrapper">
