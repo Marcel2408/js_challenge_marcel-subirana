@@ -4,9 +4,10 @@ import { ReactComponent as ShoppingIcon } from '../../assets/svg/bag.svg';
 import { ReactComponent as WishlistIcon } from '../../assets/svg/wishlist.svg';
 import CartContext from '../../contexts/Cart.context';
 import WishlistContext from '../../contexts/Wishlist.context';
+import CartDropdown from '../cart-dropdown/Cart-dropdown.component';
 
 const Header: React.FC = () => {
-  const { cartItemsCount, totalPrice } = useContext(CartContext);
+  const { cartItemsCount, totalPrice, toggleHidden, isHidden } = useContext(CartContext);
   const { wishlistCount } = useContext(WishlistContext);
 
   return (
@@ -15,7 +16,7 @@ const Header: React.FC = () => {
       <aside className="header-bag">
         <div className="header-bag__item header-bag__count">
           <div className="header-bag__price">{`${totalPrice} €`}</div>
-          <ShoppingIcon className="icon">
+          <ShoppingIcon onClick={toggleHidden} className="icon">
             <title>Bag Icon</title>
           </ShoppingIcon>
           <span
@@ -36,6 +37,7 @@ const Header: React.FC = () => {
           </span>
         </div>
       </aside>
+      {isHidden ? null : <CartDropdown />}
     </header>
   );
 };
