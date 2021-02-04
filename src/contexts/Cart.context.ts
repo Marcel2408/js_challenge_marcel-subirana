@@ -10,6 +10,7 @@ const CartContext = createContext({
   //  todo removeItem: () => {}
   // todo clearItemFromCart: () => {}
   cartItemsCount: 0,
+  totalPrice: '',
 });
 
 export default CartContext;

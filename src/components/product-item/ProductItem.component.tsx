@@ -13,13 +13,12 @@ interface ProductItemProps {
 const ProductItem: React.FC<ProductItemProps> = ({ item }) => {
   const { coverImageUrl, title, description, discount, fullPrice, finalPrice } = item;
 
+  const [isCartClicked, setIsCartClicked] = useState(false);
+  const [isWishlistClicked, setIsWishlistClicked] = useState(false);
+
   const { addItemToCart } = useContext(CartContext);
 
   const { addToWishlist, removeFromWishlist } = useContext(WishlistContext);
-
-  const [isCartClicked, setIsCartClicked] = useState(false);
-
-  const [isWishlistClicked, setIsWishlistClicked] = useState(false);
 
   const toggleWishlist = () => {
     if (!isWishlistClicked) addToWishlist();

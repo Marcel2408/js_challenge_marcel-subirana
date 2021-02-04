@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import CartContext from '../contexts/Cart.context';
-import { Item } from '../interfaces/Item.interface';
+import CartContext from '../../contexts/Cart.context';
+import { Item } from '../../interfaces/Item.interface';
+import updateTotalPrice from './Cart.utils';
 
 interface CartProviderProps {
   children: React.ReactNode;
@@ -10,6 +11,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [isHidden, setIsHidden] = useState(true);
   const [cartItems, setCartItems] = useState<Item[]>([]);
   const [cartItemsCount, setCartItemsCount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState('');
   const toggleHidden = () => setIsHidden(!isHidden);
 
   const addItemToCart = (item: Item) => {
@@ -18,6 +20,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   useEffect(() => {
     setCartItemsCount(cartItems.length);
+    setTotalPrice(updateTotalPrice(cartItems));
   }, [cartItems]);
 
   return (
@@ -28,6 +31,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         toggleHidden,
         cartItems,
         addItemToCart,
+        totalPrice,
       }}
     >
       {children}

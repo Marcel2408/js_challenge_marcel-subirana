@@ -6,7 +6,7 @@ import CartContext from '../../contexts/Cart.context';
 import WishlistContext from '../../contexts/Wishlist.context';
 
 const Header: React.FC = () => {
-  const { cartItemsCount } = useContext(CartContext);
+  const { cartItemsCount, totalPrice } = useContext(CartContext);
   const { wishlistCount } = useContext(WishlistContext);
 
   return (
@@ -14,7 +14,7 @@ const Header: React.FC = () => {
       <h1 className="page-title">BRAND</h1>
       <aside className="header-bag">
         <div className="header-bag__item header-bag__count">
-          <div className="header-bag__price">£210</div>
+          <div className="header-bag__price">{`${totalPrice} €`}</div>
           <ShoppingIcon className="icon">
             <title>Bag Icon</title>
           </ShoppingIcon>

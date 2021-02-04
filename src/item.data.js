@@ -1300,7 +1300,8 @@ const itemData = ITEM_DATA.map(
       description,
       discount,
       fullPrice,
-      finalPrice: retail_price.formatted_value,
+      finalPrice: retail_price.formatted_iso_value,
+      priceValue: retail_price.value,
     };
   }
 );

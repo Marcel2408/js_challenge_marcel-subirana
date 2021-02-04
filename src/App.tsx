@@ -3,7 +3,7 @@ import './App.css';
 import Footer from './components/footer/Footer.component';
 import Header from './components/header/Header.component';
 import ProductPage from './pages/product-page/ProductPage.component';
-import CartProvider from './providers/Cart.provider';
+import CartProvider from './providers/cart/Cart.provider';
 import WishlistProvider from './providers/Wishlist.provider';
 
 function App() {

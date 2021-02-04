@@ -6,4 +6,5 @@ export interface Item {
   discount: number;
   fullPrice: string | null;
   finalPrice: string;
+  priceValue: number;
 }
