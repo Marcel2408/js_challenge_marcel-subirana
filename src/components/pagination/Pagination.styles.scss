@@ -1,0 +1,60 @@
+.pagination {
+  height: 45px;
+  margin: 30px auto;
+  text-align: center;
+
+  &__list {
+    height: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__item {
+    height: 100%;
+    width: 45px;
+    font-family: 'Lato-Bold', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.39px;
+    text-align: center;
+  }
+
+
+  &__button {
+    cursor: pointer;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #444a59;
+    background-color: #f8f8f8;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &--arrow {
+      border-radius: 50px;
+      background-color: #efefef;
+    }
+
+    &--separator {
+      cursor: auto;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .icon {
+      width: 8px;
+      fill: #444a59;
+    }
+
+    &.active {
+      border-radius: 50px;
+      color: #f8f8f8;
+      background-color: #444A59;
+    }
+  }
+}
