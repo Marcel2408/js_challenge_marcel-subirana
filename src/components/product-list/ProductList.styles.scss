@@ -3,6 +3,7 @@
   flex: 0 1 auto;
   flex-flow: row wrap;
   margin: 0 -10px;
+  min-height: 100vh;
 
   &__item {
     padding: 10px;
