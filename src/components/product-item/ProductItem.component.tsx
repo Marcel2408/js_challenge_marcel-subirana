@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './ProductItem.styles.scss';
 import { ReactComponent as WishlistIcon } from '../../assets/svg/wishlist.svg';
-// import productImage from '../../assets/images/activity_image.jpeg';
 import CartContext from '../../contexts/Cart.context';
 import WishlistContext from '../../contexts/Wishlist.context';
 import { Item } from '../../interfaces/Item.interface';

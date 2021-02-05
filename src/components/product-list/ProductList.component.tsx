@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProductList.styles.scss';
 import ProductItem from '../product-item/ProductItem.component';
-import itemData from '../../item.data.js';
-import PaginationContainer from '../../containers/PaginationContainer';
+import Pagination from '../pagination/Pagination.component';
+import paginatedProducts from '../../services/ApiClient';
+import { Item } from '../../interfaces/Item.interface';
 
 const ProductList = () => {
+  const [products, setProducts] = useState<Item[]>([]);
+  const [page, setPage] = useState(1);
+  const totalPages = 10;
+  const handlePages = (updatePage: number) => setPage(updatePage);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const displayProducts = await paginatedProducts(page);
+      return displayProducts;
+    };
+
+    fetchProducts().then((productData) => setProducts(productData));
+  }, [page]);
+
   return (
     <div className="container">
       <ul className="product-list">
-        {itemData.map((item) => (
-          <li key={item.id} className="product-list__item">
-            <ProductItem item={item} />
+        {products.map((product) => (
+          <li key={product.id} className="product-list__item">
+            <ProductItem item={product} />
           </li>
         ))}
       </ul>
 
-      <PaginationContainer />
+      <Pagination page={page} totalPages={totalPages} handlePagination={handlePages} />
     </div>
   );
 };

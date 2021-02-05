@@ -12,8 +12,6 @@ export interface PaginationProps {
 }
 
 const Pagination: React.FC<PaginationProps> = ({ page, totalPages, handlePagination }) => {
-  console.log(totalPages);
-
   return (
     <nav className="pagination">
       <ul className="pagination__list">
