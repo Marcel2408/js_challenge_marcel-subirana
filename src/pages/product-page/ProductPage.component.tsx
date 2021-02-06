@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import ProductList from '../../components/product-list/ProductList.component';
 import './ProductPage.styles.scss';
 

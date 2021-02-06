@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import loadable from '@loadable/component';
+
 import './ProductList.styles.scss';
 import ProductItem from '../product-item/ProductItem.component';
-import Pagination from '../pagination/Pagination.component';
 import paginatedProducts from '../../services/ApiClient';
 import { Item } from '../../interfaces/Item.interface';
 import Spinner from '../spinner/Spinner.component';
+// import Pagination from '../pagination/Pagination.component';
+const Pagination = loadable(() => import('../pagination/Pagination.component'));
+
+const functions = new Set();
 
 const ProductList = () => {
   const [products, setProducts] = useState<Item[]>([]);
   const [spinner, setSpinner] = useState(true);
   const [page, setPage] = useState(1);
   const totalPages = 10;
-  const handlePages = (updatePage: number) => setPage(updatePage);
+  const handlePages = useCallback((updatePage: number) => setPage(updatePage), []);
+  functions.add(handlePages);
 
   useEffect(() => {
     if (!spinner) setSpinner(true);

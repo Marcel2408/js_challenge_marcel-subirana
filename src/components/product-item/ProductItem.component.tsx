@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import './ProductItem.styles.scss';
 import { ReactComponent as WishlistIcon } from '../../assets/svg/wishlist.svg';
 import CartContext from '../../contexts/Cart.context';
@@ -8,6 +8,8 @@ import { Item } from '../../interfaces/Item.interface';
 interface ProductItemProps {
   item: Item;
 }
+
+const functions = new Set();
 
 const ProductItem: React.FC<ProductItemProps> = ({ item }) => {
   const { coverImageUrl, title, description, discount, fullPrice, finalPrice } = item;
@@ -19,16 +21,19 @@ const ProductItem: React.FC<ProductItemProps> = ({ item }) => {
 
   const { addToWishlist, removeFromWishlist } = useContext(WishlistContext);
 
-  const toggleWishlist = () => {
+  const toggleWishlist = useCallback(() => {
     if (!isWishlistClicked) addToWishlist();
     else removeFromWishlist();
     setIsWishlistClicked(!isWishlistClicked);
-  };
-  const addToCart = () => {
+  }, [isWishlistClicked]);
+  const addToCart = useCallback(() => {
     addItemToCart(item);
     setIsCartClicked(!isCartClicked);
     if (isWishlistClicked) toggleWishlist();
-  };
+  }, [item, isCartClicked, isWishlistClicked]);
+
+  functions.add(toggleWishlist);
+  functions.add(addToCart);
 
   useEffect(() => {
     if (!cartItems.includes(item) && isCartClicked) {
@@ -83,4 +88,4 @@ const ProductItem: React.FC<ProductItemProps> = ({ item }) => {
   );
 };
 
-export default ProductItem;
+export default React.memo(ProductItem);

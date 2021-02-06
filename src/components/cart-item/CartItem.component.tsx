@@ -10,6 +10,7 @@ interface CartItemProps {
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const { coverImageUrl, title, finalPrice, id } = item;
   const { removeItem } = useContext(CartContext);
+
   return (
     <div className="cart-item">
       <img className="cart-item__image" src={coverImageUrl} alt="Cart Product" itemProp="image" />
@@ -24,4 +25,4 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   );
 };
 
-export default CartItem;
+export default React.memo(CartItem);

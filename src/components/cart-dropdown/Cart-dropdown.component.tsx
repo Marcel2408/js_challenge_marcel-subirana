@@ -5,6 +5,7 @@ import './Cart-dropdown.styles.scss';
 
 const CartDropdown: React.FC = () => {
   const { cartItems, toggleHidden } = useContext(CartContext);
+
   return (
     <div className="cart-dropdown" onMouseLeave={toggleHidden}>
       <div className="cart-items">
