@@ -12,34 +12,39 @@ interface ProductItemProps {
 const functions = new Set();
 
 const ProductItem: React.FC<ProductItemProps> = ({ item }) => {
-  const { coverImageUrl, title, description, discount, fullPrice, finalPrice } = item;
+  const { id, coverImageUrl, title, description, discount, fullPrice, finalPrice } = item;
 
   const [isCartClicked, setIsCartClicked] = useState(false);
   const [isWishlistClicked, setIsWishlistClicked] = useState(false);
 
-  const { cartItems, removeItem, addItemToCart } = useContext(CartContext);
+  const { cartItems, updateCart } = useContext(CartContext);
 
-  const { addToWishlist, removeFromWishlist } = useContext(WishlistContext);
+  const { wishlist, updateWishlist } = useContext(WishlistContext);
 
   const toggleWishlist = useCallback(() => {
-    if (!isWishlistClicked) addToWishlist();
-    else removeFromWishlist();
+    updateWishlist(id);
     setIsWishlistClicked(!isWishlistClicked);
   }, [isWishlistClicked]);
+
   const addToCart = useCallback(() => {
-    addItemToCart(item);
-    setIsCartClicked(!isCartClicked);
+    updateCart(id);
+    setIsCartClicked(false);
     if (isWishlistClicked) toggleWishlist();
-  }, [item, isCartClicked, isWishlistClicked]);
+  }, [isCartClicked, isWishlistClicked]);
 
   functions.add(toggleWishlist);
   functions.add(addToCart);
 
   useEffect(() => {
-    if (!cartItems.includes(item) && isCartClicked) {
-      setIsCartClicked(!isCartClicked);
+    if (wishlist.includes(id)) {
+      setIsWishlistClicked(true);
     }
-  }, [removeItem]);
+    if (cartItems.includes(id)) {
+      setIsCartClicked(true);
+    } else {
+      setIsCartClicked(false);
+    }
+  }, [cartItems]);
 
   return (
     <article className="product" itemScope itemType="http://schema.org/Product">

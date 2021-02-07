@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CartContext from '../../contexts/Cart.context';
-import { Item } from '../../interfaces/Item.interface';
+import ProductContext from '../../contexts/Product.context';
 import updateTotalPrice from './Cart.utils';
 
 interface CartProviderProps {
@@ -8,23 +8,22 @@ interface CartProviderProps {
 }
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+  const { products } = useContext(ProductContext);
   const [isHidden, setIsHidden] = useState(true);
-  const [cartItems, setCartItems] = useState<Item[]>([]);
+  const [cartItems, setCartItems] = useState<string[]>([]);
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState('');
   const toggleHidden = () => setIsHidden(!isHidden);
 
-  const addItemToCart = (item: Item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
-  };
-
-  const removeItem = (id: string) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  const updateCart = (id: string) => {
+    setCartItems((prevItems) =>
+      prevItems.includes(id) ? prevItems.filter((itemId) => itemId !== id) : [...prevItems, id]
+    );
   };
 
   useEffect(() => {
     setCartItemsCount(cartItems.length);
-    setTotalPrice(updateTotalPrice(cartItems));
+    setTotalPrice(updateTotalPrice(cartItems, products));
   }, [cartItems]);
 
   return (
@@ -34,8 +33,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         isHidden,
         toggleHidden,
         cartItems,
-        addItemToCart,
-        removeItem,
+        updateCart,
         totalPrice,
       }}
     >

@@ -5,10 +5,8 @@ import { Item } from '../interfaces/Item.interface';
 const CartContext = createContext({
   isHidden: true,
   toggleHidden: () => {},
-  cartItems: <Item[]>[],
-  addItemToCart: (item: Item) => {},
-  removeItem: (id: string) => {},
-  // clearItemFromCart: () => {},
+  cartItems: <string[]>[],
+  updateCart: (id: string) => {},
   cartItemsCount: 0,
   totalPrice: '',
 });

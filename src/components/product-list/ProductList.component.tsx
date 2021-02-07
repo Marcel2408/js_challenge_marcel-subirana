@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import loadable from '@loadable/component';
 
 import './ProductList.styles.scss';
@@ -6,14 +6,17 @@ import ProductItem from '../product-item/ProductItem.component';
 import paginatedProducts from '../../services/ApiClient';
 import { Item } from '../../interfaces/Item.interface';
 import Spinner from '../spinner/Spinner.component';
+import { Page } from '../../interfaces/Page.interface';
+import ProductContext from '../../contexts/Product.context';
 
 const Pagination = loadable(() => import('../pagination/Pagination.component'));
 
 const functions = new Set();
 
 const ProductList = () => {
-  const [products, setProducts] = useState<Item[]>([]);
+  const { products, addProducts } = useContext(ProductContext);
   const [spinner, setSpinner] = useState(true);
+  const [pages, setPages] = useState<Page>({});
   const [page, setPage] = useState(1);
   const totalPages = 10;
   const handlePages = useCallback((updatePage: number) => setPage(updatePage), []);
@@ -26,18 +29,28 @@ const ProductList = () => {
       return displayProducts;
     };
 
-    fetchProducts()
-      .then((productData) => setProducts(productData))
-      .then(() => setSpinner(false));
+    if (!pages[page]) {
+      fetchProducts()
+        .then((productData) => {
+          addProducts(productData);
+          setPages((prevPages) => ({
+            ...prevPages,
+            [page]: productData.map((product: Item) => product.id),
+          }));
+        })
+        .then(() => setSpinner(false));
+    } else {
+      setSpinner(false);
+    }
   }, [page]);
 
   return (
     <div className="container">
       <ul className="product-list">
-        {!spinner ? (
-          products.map((product) => (
-            <li key={product.id} className="product-list__item">
-              <ProductItem item={product} />
+        {!spinner && pages[page] ? (
+          pages[page].map((id) => (
+            <li key={id} className="product-list__item">
+              <ProductItem item={products[id]} />
             </li>
           ))
         ) : (

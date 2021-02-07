@@ -6,21 +6,17 @@ interface WishlistProviderProps {
 }
 
 const WishlistProvider: React.FC<WishlistProviderProps> = ({ children }) => {
-  const [wishlistCount, setWishlistCount] = useState(0);
-  const addToWishlist = () => {
-    setWishlistCount((prevCount) => {
-      const updatedCount = prevCount + 1;
-      return updatedCount;
-    });
+  const [wishlist, setWishlist] = useState<string[]>([]);
+  const updateWishlist = (id: string) => {
+    setWishlist((prevWishlist) =>
+      prevWishlist.includes(id)
+        ? prevWishlist.filter((wishlistId) => wishlistId !== id)
+        : [...prevWishlist, id]
+    );
   };
-  const removeFromWishlist = () => {
-    setWishlistCount((prevCount) => {
-      const updatedCount = prevCount - 1;
-      return updatedCount;
-    });
-  };
+
   return (
-    <WishlistContext.Provider value={{ wishlistCount, addToWishlist, removeFromWishlist }}>
+    <WishlistContext.Provider value={{ wishlist, updateWishlist }}>
       {children}
     </WishlistContext.Provider>
   );

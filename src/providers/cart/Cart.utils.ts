@@ -1,9 +1,9 @@
-import { Item } from '../../interfaces/Item.interface';
+import { Product } from '../../interfaces/Product.interface';
 
-const updateTotalPrice = (items: Item[]) => {
-  return items
-    .reduce((totalPrice, item) => {
-      return totalPrice + item.priceValue;
+const updateTotalPrice = (ids: string[], products: Product) => {
+  return ids
+    .reduce((totalPrice: number, id: string) => {
+      return totalPrice + products[id].priceValue;
     }, 0)
     .toFixed(2);
 };

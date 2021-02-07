@@ -9,12 +9,12 @@ interface CartItemProps {
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const { coverImageUrl, title, finalPrice, id } = item;
-  const { removeItem } = useContext(CartContext);
+  const { updateCart } = useContext(CartContext);
 
   return (
     <div className="cart-item">
       <img className="cart-item__image" src={coverImageUrl} alt="Cart Product" itemProp="image" />
-      <button type="button" className="cart-item__remove" onClick={() => removeItem(id)}>
+      <button type="button" className="cart-item__remove" onClick={() => updateCart(id)}>
         &#10005;
       </button>
       <div className="cart-item__details">

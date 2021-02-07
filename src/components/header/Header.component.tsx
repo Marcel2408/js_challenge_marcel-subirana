@@ -8,7 +8,7 @@ import CartDropdown from '../cart-dropdown/Cart-dropdown.component';
 
 const Header: React.FC = () => {
   const { cartItemsCount, totalPrice, toggleHidden, isHidden } = useContext(CartContext);
-  const { wishlistCount } = useContext(WishlistContext);
+  const { wishlist } = useContext(WishlistContext);
 
   return (
     <header className="header container">
@@ -31,9 +31,9 @@ const Header: React.FC = () => {
           <title>Wishlist Icon</title>
           <span
             className="bag__item-counter"
-            style={wishlistCount ? { visibility: 'visible' } : { visibility: 'hidden' }}
+            style={wishlist.length ? { visibility: 'visible' } : { visibility: 'hidden' }}
           >
-            {wishlistCount}
+            {wishlist.length}
           </span>
         </div>
       </aside>
