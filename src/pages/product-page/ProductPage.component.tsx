@@ -1,11 +1,14 @@
-import React from 'react';
-import ProductList from '../../components/product-list/ProductList.component';
+import React, { lazy, Suspense } from 'react';
+import SpinnerComponent from '../../components/spinner/Spinner.component';
 import './ProductPage.styles.scss';
 
+const ProductList = lazy(() => import('../../components/product-list/ProductList.component'));
 const ProductPage: React.FC = () => {
   return (
     <main className="product-page">
-      <ProductList />
+      <Suspense fallback={SpinnerComponent}>
+        <ProductList />
+      </Suspense>
     </main>
   );
 };

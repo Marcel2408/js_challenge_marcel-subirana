@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import WishlistContext from '../contexts/Wishlist.context';
+import WishlistContext from '../../contexts/Wishlist.context';
 
 interface WishlistProviderProps {
   children: React.ReactNode;

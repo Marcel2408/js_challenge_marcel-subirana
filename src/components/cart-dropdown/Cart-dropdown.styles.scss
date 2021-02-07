@@ -1,3 +1,5 @@
+@import '../../sass/variables';
+
 .cart-dropdown {
   position: absolute;
   width: 240px;
@@ -5,10 +7,10 @@
   display: flex;
   flex-direction: column;
   padding: 1.4rem;
-  border: 1px solid #000;
-  background-color: #fff;
+  border: 1px solid $color-black;
+  background-color: $color-white;
   top: 60px;
-  right: 50px;
+  right: 100px;
   z-index: 5;
 
   .cart-items {
@@ -22,19 +24,16 @@
     }
   }
 
-  .button--checkout {
-    margin-top: auto;
-    border: 1px solid #444a59;
-    border-radius: 100px;
-    background-color: #444a59;
-    outline: none;
-    color: #fff;
+}
 
-    &:hover {
-      border: 1px solid #d9d9d9;
-      background-color: #ffffff;
-      outline: none;
-      color: #808080;
-    }
+@media screen and (max-width: 1100px) {
+  .cart-dropdown {
+    right: 40px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .cart-dropdown {
+    right: 20px;
   }
 }

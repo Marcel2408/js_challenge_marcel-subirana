@@ -6,7 +6,7 @@ import ProductItem from '../product-item/ProductItem.component';
 import paginatedProducts from '../../services/ApiClient';
 import { Item } from '../../interfaces/Item.interface';
 import Spinner from '../spinner/Spinner.component';
-// import Pagination from '../pagination/Pagination.component';
+
 const Pagination = loadable(() => import('../pagination/Pagination.component'));
 
 const functions = new Set();

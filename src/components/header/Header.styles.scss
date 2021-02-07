@@ -1,3 +1,5 @@
+@import '../../sass/variables';
+
 .header {
   height: 60px;
 
@@ -22,7 +24,7 @@
 
       & .icon {
         height: auto;
-        fill: #444A59;
+        fill: $color-dark;
         cursor: pointer;
       }
     }

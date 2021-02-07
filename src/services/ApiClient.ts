@@ -31,7 +31,7 @@ const paginatedProducts = async (page: number) => {
       const fullPrice = net_price ? net_price.formatted_value : null;
       return {
         id: uuid,
-        coverImageUrl: cover_image_url,
+        coverImageUrl: `${cover_image_url}?q=60&fit=crop&w450=&h=300`,
         title,
         description,
         discount,

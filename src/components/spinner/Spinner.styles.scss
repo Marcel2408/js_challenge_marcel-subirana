@@ -1,3 +1,5 @@
+@import '../../sass/variables';
+
 .spinner {
   margin: 300px auto;
   width: 60px;
@@ -7,7 +9,7 @@
 }
 
 .spinner > div {
-  background-color: #333;
+  background-color: $color-dark;
   height: 100%;
   width: 6px;
   display: inline-block;

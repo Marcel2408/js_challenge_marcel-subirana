@@ -1,25 +1,32 @@
+@import '../../sass/variables';
+@import '../../sass/button';
+
 /* ==========================================================================
    Fonts
    ========================================================================== */
 
-   @font-face{
+@font-face{
     font-family: 'Lato-Bold';
-    src: url('./assets/font/Lato-Bold.ttf') format('ttf');
+    src: url('../../assets/font/Lato-Bold.ttf') format('ttf');
+    font-display: swap;
 }
 
 @font-face{
     font-family: 'Lato-BoldItalic';
-    src: url('./assets/font/Lato-BoldItalic.ttf') format('ttf');
+    src: url('../../assets/font/Lato-BoldItalic.ttf') format('ttf');
+    font-display: swap;
 }
 
 @font-face{
     font-family: 'Lato-Italic';
-    src: url('./assets/font/Lato-Italic.ttf') format('ttf');
+    src: url('../../assets/font/Lato-Italic.ttf') format('ttf');
+    font-display: swap;
 }
 
 @font-face{
     font-family: 'Lato-Regular';
-    src: url('./assets/font/Lato-Regular.ttf') format('ttf');
+    src: url('../../assets/font/Lato-Regular.ttf') format('ttf');
+    font-display: swap;
 }
 
 /* ==========================================================================
@@ -44,12 +51,12 @@ body {
     -moz-osx-font-smoothing: grayscale;  /* Font smoothing tweaks for MacOSx in Gecko */
     -webkit-font-smoothing: antialiased;
 
-    color: #444A59;
-    background-color: #f8f8f8;
+    color: $color-dark;
+    background-color: $color-primary;
 }
 
-* {
-    box-sizing: border-box;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 h1, p, figure {
@@ -61,7 +68,7 @@ a,
 a:hover,
 a:visited{
     text-decoration: none;
-    color: #444A59;
+    color: $color-dark;
 }
 
 ul, li {
@@ -84,14 +91,7 @@ footer {
     align-items: center;
 
     text-transform: uppercase;
-    background-color: #ffffff;
-}
-
-main {
-    display: flex;
-    flex-direction: row;
-    flex: 1 0 auto;
-    margin: 30px 0 20px;
+    background-color: $color-white;
 }
 
 .container {
@@ -99,4 +99,16 @@ main {
     max-width: 1240px;
     padding: 0 40px;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 0 5px;
+  }
 }

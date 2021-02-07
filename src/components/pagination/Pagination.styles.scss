@@ -1,3 +1,5 @@
+@import '../../sass/variables';
+
 .pagination {
   height: 45px;
   margin: 30px auto;
@@ -18,7 +20,6 @@
     text-align: center;
   }
 
-
   &__button {
     cursor: pointer;
     outline: none;
@@ -27,8 +28,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #444a59;
-    background-color: #f8f8f8;
+    color: $color-dark;
+    background-color: $color-primary;
 
     &:hover {
       text-decoration: underline;
@@ -48,13 +49,43 @@
 
     .icon {
       width: 8px;
-      fill: #444a59;
+      fill: $color-dark;
     }
 
     &.active {
       border-radius: 50px;
       color: #f8f8f8;
-      background-color: #444A59;
+      background-color: #444a59;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .pagination {
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  &__list {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .pagination {
+    &__item {
+      height: 90%;
+      width: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .pagination {
+    &__item {
+      height: 75%;
+      width: 35px;
     }
   }
 }
