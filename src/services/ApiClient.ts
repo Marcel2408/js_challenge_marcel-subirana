@@ -6,8 +6,18 @@ const BASE_URL = 'https://api.musement.com';
 const fetchProducts = async (page: number, limit: number = 6) => {
   const offset = limit * (page - 1);
   const url = `${BASE_URL}/api/v3/venues/164/activities?limit=${limit}&offset=${offset}`;
+  const options = {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Accept-Language': 'it',
+      'X-Musement-Currency': 'EUR',
+      'x-musement-version': '3.4.0',
+    },
+  };
   try {
-    const jsonData = await fetch(`${url}`);
+    const jsonData = await fetch(`${url}`, options);
     const products = await jsonData.json();
     return products;
   } catch (error) {
