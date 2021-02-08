@@ -3,7 +3,7 @@ import loadable from '@loadable/component';
 
 import './ProductList.styles.scss';
 import ProductItem from '../product-item/ProductItem.component';
-import paginatedProducts from '../../services/ApiClient';
+import paginatedProducts from '../../services/apiClient';
 import { Item } from '../../interfaces/Item.interface';
 import Spinner from '../spinner/Spinner.component';
 import { Page } from '../../interfaces/Page.interface';

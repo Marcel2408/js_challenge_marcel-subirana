@@ -1,13 +1,13 @@
+import axios from 'axios';
 import { Item } from '../interfaces/Item.interface';
 
 /* eslint-disable camelcase */
 const BASE_URL = 'https://api.musement.com';
 
-const fetchProducts = async (page: number, limit: number = 6) => {
+export const fetchProducts = async (page: number, limit: number = 6) => {
   const offset = limit * (page - 1);
   const url = `${BASE_URL}/api/v3/venues/164/activities?limit=${limit}&offset=${offset}`;
   const options = {
-    method: 'GET',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -17,8 +17,9 @@ const fetchProducts = async (page: number, limit: number = 6) => {
     },
   };
   try {
-    const jsonData = await fetch(`${url}`, options);
-    const products = await jsonData.json();
+    const response = await axios.get(`${url}`, options);
+    const products = await response.data;
+
     return products;
   } catch (error) {
     throw Error(error.message);
