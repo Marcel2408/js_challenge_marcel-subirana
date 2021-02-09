@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render Cart-dropdown component 1`] = `
+<div
+  className="cart-dropdown"
+  onMouseLeave={[Function]}
+>
+  <div
+    className="cart-items"
+  >
+    <span
+      className="empty-message"
+    >
+      Your cart is empty
+    </span>
+  </div>
+  <button
+    className="button button--primary button--checkout"
+    type="button"
+  >
+    Go to checkout
+  </button>
+</div>
+`;
