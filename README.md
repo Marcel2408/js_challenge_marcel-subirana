@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# Javascript Developer coding challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Using the assets provided, your task is to build a simple e-commerce application.
 
-## Available Scripts
+Dear Musement team,
 
-In the project directory, you can run:
+thank you for your opportunity and time, I've put all my effort in delivering a well structured and performant code, that meets the requirements and almost all extra credits, I hope you like it!
 
-### `npm start`
+I have also added 'Notes' and 'Improvements that can be done' sections in order to share my thoughts on why I am doing certain things.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To run the production output can be build by running from the root folder:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+$ npm run build
+```
 
-### `npm test`
+## Extra credits achieved
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Use CSS preprocessors -- use SASS
 
-### `npm run build`
+* Use of linting tools -- use ESLint
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Performant code -- use useCallback and React.memo()
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Fast page load -- divided the bundle into chunks
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Optimized user experience -- used react-a11y to improve it
 
-### `npm run eject`
+* Statically typed code -- use TS
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Notes
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Performance:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- I use useCallback together with a Set in the components that make use of inline functions, to avoid making new instances of the same functions.
+- I use 'memo()' as a wrapper in the CartItem component and in the ProductItem component to memoize them and avoid being rerendered if there's no change in its props. 
+- I use @loadable/component library to load the components that are visible on the page. Like this, elements such as Pagination and Footer are bundled in a separate chunk
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+State management:
 
-## Learn More
+- I decided to use the Context API to avoid prop-drilling and abstract the state for easier access. I think this leads to better readability and maintenance of the code. 
+- In this occasion I did not use Redux because I find the Context API less verbose and lightweight for a small project like this one.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+React version:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- I decided to use React 16 instead of 17 because I wanted to make sure that the last official version of Enzyme was compatible
+
+## Improvements that can be done
+
+Performance:
+
+- If I needed to use a react router to build the project, I would have included 'lazy' with 'Suspense' wrapping the different routes, in order to not fully load the code of the routes that aren't needed until the user clicks, improving performance by loading the code in chunks to the browser.
+
+Responsiveness and styles:
+
+- By converting all px to rem would make it easier to work on responsiveness, as by just modifying the root font-size all sizes measured in rem would be modified accordingly. In this regard, stating the root font-size to 10px make it easier to figure out rem sizes in other properties, as 1rem === 10px
+- By declaring mixins some CSS operations can be faster, such as centering elements or quickly adding the basic structure when declaring an element as flex container
+- Other reusable properties such as between sections margins can be saved into $variables in order to quickly build them. 
+
+CartContext:
+
+- I have decided to use 'cartItemsCount' instead of checking cartItems.length to display the total of products in cart, because if a functionality to add more than one of the same product is implemented (by adding a 'quantity' property of each product), this property would be able to keep track of the total amount of products and its quantity (and not only the length of the cartItems array).  
+- The same with 'isHidden', I decided to add it to the context to make sure that if in the future another component wants to toggle the CartDropdown it will have access.
+
+Testing:
+
+- Perhaps the area in which I have more room for improvement is knowledge about testing React. I have more experience testing Express.js and tried to learn as much as possible, and I am currently working on learning Context API testing.
+- In the project I developed some unit tests but testing useEffect and states would be the main improvement to be done.
