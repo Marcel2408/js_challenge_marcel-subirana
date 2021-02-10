@@ -16,10 +16,11 @@ const Header: React.FC = () => {
       <aside className="header-bag">
         <div className="header-bag__item header-bag__count">
           <div className="header-bag__price">{`${totalPrice} €`}</div>
-          <ShoppingIcon onClick={toggleHidden} className="icon">
+          <ShoppingIcon id="shopping-icon" onClick={toggleHidden} className="icon">
             <title>Bag Icon</title>
           </ShoppingIcon>
           <span
+            id="cart__item-counter"
             style={cartItemsCount ? { visibility: 'visible' } : { visibility: 'hidden' }}
             className="bag__item-counter"
           >
@@ -30,6 +31,7 @@ const Header: React.FC = () => {
           <WishlistIcon />
           <title>Wishlist Icon</title>
           <span
+            id="wishlist__item-counter"
             className="bag__item-counter"
             style={wishlist.length ? { visibility: 'visible' } : { visibility: 'hidden' }}
           >
