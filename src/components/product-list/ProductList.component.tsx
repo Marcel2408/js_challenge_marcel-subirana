@@ -26,6 +26,7 @@ const ProductList = () => {
     if (!spinner) setSpinner(true);
     const fetchProducts = async () => {
       const displayProducts = await paginatedProducts(page);
+
       return displayProducts;
     };
 

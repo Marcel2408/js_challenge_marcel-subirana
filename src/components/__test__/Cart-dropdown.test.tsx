@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CartDropdown from './Cart-dropdown.component';
+import CartDropdown from '../cart-dropdown/Cart-dropdown.component';
 
 it('expect to render Cart-dropdown component', () => {
   const actualSnapshot = renderer.create(<CartDropdown />).toJSON();

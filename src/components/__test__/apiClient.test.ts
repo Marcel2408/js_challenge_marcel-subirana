@@ -1,6 +1,6 @@
 import axios from 'axios';
-import paginatedProducts, { fetchProducts } from './apiClient';
-import mockData from './apiClient.mocks';
+import paginatedProducts, { fetchProducts } from '../../services/apiClient';
+import mockData from './mocks/apiClient.mocks';
 
 describe('fetchProducts', () => {
   beforeEach(() => {

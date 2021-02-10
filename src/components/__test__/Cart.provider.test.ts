@@ -1,5 +1,5 @@
-import updateTotalPrice from './Cart.utils';
-import mockData from './Cart.utils.mock';
+import updateTotalPrice from '../../providers/cart/Cart.utils';
+import mockData from './mocks/Cart.utils.mock';
 
 describe('updateTotalPrice', () => {
   it('returns total price well formatted with 2 decimals', () => {

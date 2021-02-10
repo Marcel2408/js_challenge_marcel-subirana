@@ -20,7 +20,6 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       prevItems.includes(id) ? prevItems.filter((itemId) => itemId !== id) : [...prevItems, id]
     );
   };
-  console.log(products);
 
   useEffect(() => {
     setCartItemsCount(cartItems.length);
